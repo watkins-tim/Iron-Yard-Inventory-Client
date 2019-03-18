@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import './App.css';
+import Home from './home';
 
 class App extends Component {
   render() {
@@ -11,8 +11,6 @@ class App extends Component {
           </header>
           <main>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/inventory" cpmponent={Inventory}/>
-            <Route exact path="/new-ite" component={NewItem} />
           </main>
         </div>
       </Router>

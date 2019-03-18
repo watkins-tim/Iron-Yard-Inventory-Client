@@ -1,1 +1,5 @@
-import {} from '../actions/mainaction';
+import {} from '../actions/main-action';
+
+export default ()=>{
+
+}
