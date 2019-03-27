@@ -1,0 +1,8 @@
+.info-container{
+    background:linear-gradient(rgb(27, 27, 27), rgb(53, 53, 53));
+    min-height:500px;
+}
+.info-text{
+    color:white;
+    
+}

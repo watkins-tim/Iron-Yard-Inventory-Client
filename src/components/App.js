@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
 import Home from './home';
+import Inventory from './inventory';
 
 class App extends Component {
   render() {
+
     return (
       <Router>
         <div className="App">
           <header className="App-header">
           </header>
           <main>
-            <Route exact path="/" component={Home}/>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route exact path="/inventory" component={Inventory}/>
+            </Switch>
           </main>
         </div>
       </Router>
@@ -18,4 +23,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default (App);
