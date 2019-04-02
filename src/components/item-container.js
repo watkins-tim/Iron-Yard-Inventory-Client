@@ -10,6 +10,7 @@ class ItemContainer extends React.Component{
 
 
     render(){
+        
         if (this.props.loading){
             return(
             <div className='inventory-container'>
@@ -20,6 +21,7 @@ class ItemContainer extends React.Component{
         else if (this.props.loading ===false && this.props.items.length>0){
             
             const Items = this.props.items.map(item=>{
+                console.log(item);
                 return <li key={item.id}><Item info={item}/></li> 
 
             })
@@ -43,7 +45,8 @@ class ItemContainer extends React.Component{
 const mapStateToProps = state => {
     return{
         items: state.invReducer.items,
-        loading: state.invReducer.loading
+        loading: state.invReducer.loading,
+        newItem:state.invReducer.newItemInfo
     }
 };
 

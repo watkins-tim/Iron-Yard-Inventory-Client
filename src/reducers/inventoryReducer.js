@@ -1,4 +1,4 @@
-import {GET_INV, LOADING, NOT_LOADING, NEW_ITEM_HIDE, NEW_ITEM_SHOW} from '../actions/inventory-actions';
+import {GET_INV, LOADING, NOT_LOADING, NEW_ITEM_HIDE, NEW_ITEM_SHOW, ADD_NEW_ITEM} from '../actions/inventory-actions';
 
 const initialState = {
     items:{},
@@ -38,6 +38,12 @@ export default(state=initialState, action)=>{
     else if (action.type === NEW_ITEM_SHOW){
         const obj = Object.assign({}, state,{
             newItem:true
+        })
+        return obj;
+    }
+    else if (action.type === ADD_NEW_ITEM){
+        const obj = Object.assign({}, state,{
+            items:[action.item, ...state.items]
         })
         return obj;
     }

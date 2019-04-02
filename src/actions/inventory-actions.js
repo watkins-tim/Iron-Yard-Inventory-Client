@@ -32,3 +32,9 @@ export const newItemHide = () => ({
     type:NEW_ITEM_HIDE,
     newItem:false
 });
+
+export const ADD_NEW_ITEM='ADD_NEW_ITEM';
+export const addNewItem = (item) => ({
+    type:ADD_NEW_ITEM,
+    item: item
+});

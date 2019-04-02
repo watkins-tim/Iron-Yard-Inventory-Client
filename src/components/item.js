@@ -17,7 +17,6 @@ export class Item extends React.Component{
 
           //only adds changed values to this.state.body to be sent to server
           handleChange(e){
-            console.log(e.target.id);
             const obj = {...this.state.body,
                 [e.target.id]: e.target.value};
                 console.log(obj);
@@ -56,10 +55,7 @@ export class Item extends React.Component{
                 }
                 return res.json()
             })
-
-
-
-
+            .catch(err=>console.log(err));
           };
         
 
@@ -105,6 +101,8 @@ export class Item extends React.Component{
                         onChange={e => this.handleChange(e)}
                         name='quantity'
                         id='quantity'
+                        type="number"
+                        min='0'
                         defaultValue={this.props.info.quantity}
                         disabled = {(this.state.disabled)? "disabled" : ""}></input>
                     </label>
@@ -113,6 +111,8 @@ export class Item extends React.Component{
                         onChange={e => this.handleChange(e)}
                         name='feet'
                         id='feet'
+                        type="number"
+                        min='0'
                         defaultValue={this.props.info.feet}
                         disabled = {(this.state.disabled)? "disabled" : ""}></input>'
 
@@ -120,6 +120,9 @@ export class Item extends React.Component{
                         onChange={e => this.handleChange(e)}
                         name='inches'
                         id='inches'
+                        type="number"
+                        min='0'
+                        max='11'
                         defaultValue={this.props.info.inches}
                         disabled = {(this.state.disabled)? "disabled" : ""}></input>"
 
@@ -127,8 +130,19 @@ export class Item extends React.Component{
                         onChange={e => this.handleChange(e)}
                         name='fraction'
                         id='fraction'
+                        type="number"
+                        min='0'
+                        max='15'
                         defaultValue={this.props.info.fraction}
                         disabled = {(this.state.disabled)? "disabled" : ""}></input>/16
+                    </label>
+                    <label htmlFor="grade" className="item-attribute">Grade:
+                        <input 
+                        onChange={e => this.handleChange(e)}
+                        name='grade'
+                        id='grade'
+                        defaultValue={this.props.info.grade}
+                        disabled = {(this.state.disabled)? "disabled" : ""}></input>
                     </label>
                     <label htmlFor="po" className="item-attribute">PO:
                         <input 

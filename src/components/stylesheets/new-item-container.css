@@ -3,5 +3,22 @@
     position: fixed;
     top:100px;
     left:100px;
-        
+    padding:20px;
+
+}
+.neg{
+    background: url('../../images/X.png');
+    display:none;
+
+}
+.pos{
+    background: url('../../images/check.png');
+    display:none;
+}
+.feedback-img{
+    height:40px;
+    width:40px;
+    background-position:center;
+    background-size: contain;
+
 }
