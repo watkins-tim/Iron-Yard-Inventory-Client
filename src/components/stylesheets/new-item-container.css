@@ -6,19 +6,32 @@
     padding:20px;
 
 }
-.neg{
-    background: url('../../images/X.png');
-    display:none;
-
-}
 .pos{
     background: url('../../images/check.png');
-    display:none;
 }
-.feedback-img{
+.neg{
+    background: url('../../images/X.png');
+}
+.pos, .neg{
+    background-color:pink;
+    position:absolute;
+    top:50px;
+    left:100px;
+    opacity: 0;
     height:40px;
     width:40px;
     background-position:center;
     background-size: contain;
-
 }
+.neg.show, .pos.show{
+    opacity:1;
+}
+.neg.hide, .pos.hide{
+    opacity:0;
+    transition: opacity 2s;
+}
+
+
+
+
+

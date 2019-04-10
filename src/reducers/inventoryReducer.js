@@ -1,4 +1,4 @@
-import {GET_INV, LOADING, NOT_LOADING, NEW_ITEM_HIDE, NEW_ITEM_SHOW, ADD_NEW_ITEM} from '../actions/inventory-actions';
+import {GET_INV, LOADING, NOT_LOADING, NEW_ITEM_HIDE, NEW_ITEM_SHOW, ADD_NEW_ITEM, DELETE_ITEM_SUCCESS} from '../actions/inventory-actions';
 
 const initialState = {
     items:{},
@@ -47,6 +47,26 @@ export default(state=initialState, action)=>{
         })
         return obj;
     }
+    else if(action.type === DELETE_ITEM_SUCCESS){
+        console.log('here2');
+        let obj;
+        let arr = state.items;
+        console.log(arr);
+        const i = state.items.findIndex(x=>{
+            return x._id === action.info._id
+        });
+        if (i>-1){
+            arr = arr.filter ((item, index) => index !== i) // new array without 'b'
+        }
 
-    return state;
+        obj = Object.assign({},state,{
+            items:arr
+        });
+        return obj
+    
+    }
+    else{
+        return state;
+    }
+
 }

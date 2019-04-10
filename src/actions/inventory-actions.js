@@ -1,3 +1,6 @@
+import {API_URL} from '../config'
+
+
 export const GET_INV = 'GET_INV';
 export const getInv = items => ({
     type: GET_INV,
@@ -38,3 +41,40 @@ export const addNewItem = (item) => ({
     type:ADD_NEW_ITEM,
     item: item
 });
+
+export const DELETE_ITEM='DELETE_ITEM';
+export const deleteItem = (info) => dispatch => {
+    let obj;
+    fetch(`${API_URL}/api/item/${info._id}`,{
+        method:'DELETE',
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization': 'Bearer ' + info.token
+        }
+    })
+    .then(res=>{
+        if(!res.status === 200){
+            Promise.reject({
+            });
+        }
+        dispatch(deleteItemSuccess(info))
+
+    })
+    .catch(err=>{
+        console.log(err);
+        dispatch(deleteItemFail(err))
+
+    })
+};
+
+export const DELETE_ITEM_SUCCESS='DELETE_ITEM_SUCCESS';
+export const deleteItemSuccess = (info) => ({
+    type:DELETE_ITEM_SUCCESS,
+    info:info
+})
+
+export const DELETE_ITEM_FAIL='DELETE_ITEM_FAIL';
+export const deleteItemFail = (err) => ({
+    type:DELETE_ITEM_FAIL,
+    error: err
+})

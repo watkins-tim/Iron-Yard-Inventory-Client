@@ -1,14 +1,15 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {reduxForm, Field} from 'redux-form';
-import { Redirect } from 'react-router-dom'
 
 
 import {login} from '../actions/user-actions'
 
+import {API_URL} from '../config'
+
 export class SignupForm extends React.Component{
     goToInventory() {
-        return <Redirect to="/inventory"/>
+        this.props.history.push('/inventory');
     }
     
     onSubmit(values){
@@ -16,7 +17,7 @@ export class SignupForm extends React.Component{
         delete postVals.confirmPass;
         console.log(postVals);
 
-        return fetch('http://localhost:8080/api/user/',{
+        return fetch(`${API_URL}/api/user/`,{
             method:'POST',
             body:JSON.stringify(postVals),
             headers:{
@@ -29,7 +30,7 @@ export class SignupForm extends React.Component{
                     code:res.status,
                 });
             }
-            return fetch('http://localhost:8080/api/auth/login',{
+            return fetch(`${API_URL}/api/auth/login`,{
                 method:'POST',
                 body:JSON.stringify({username:values.username,password:values.password}),
                 headers:{

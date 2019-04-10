@@ -21,8 +21,8 @@ class ItemContainer extends React.Component{
         else if (this.props.loading ===false && this.props.items.length>0){
             
             const Items = this.props.items.map(item=>{
-                console.log(item);
-                return <li key={item.id}><Item info={item}/></li> 
+                //console.log(item);
+                return <li key={item._id}><Item info={item}/></li> 
 
             })
             return(

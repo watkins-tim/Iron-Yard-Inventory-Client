@@ -1,8 +1,11 @@
 import React from 'react';
 import {connect} from "react-redux";
 
+import {deleteItem} from '../actions/inventory-actions'
+
 import './stylesheets/item.css';
 
+import {API_URL} from '../config'
 
 export class Item extends React.Component{
         constructor(props) {
@@ -10,7 +13,9 @@ export class Item extends React.Component{
             this.state = { 
                 disabled: true,
                 edited:false,
-                body:{}
+                body:{},
+                token:localStorage.getItem('token')
+
              }
           }
 
@@ -19,7 +24,6 @@ export class Item extends React.Component{
           handleChange(e){
             const obj = {...this.state.body,
                 [e.target.id]: e.target.value};
-                console.log(obj);
             this.setState({
                 body:obj
             })
@@ -38,14 +42,13 @@ export class Item extends React.Component{
                 disabled:true
             });
 
-            const token = localStorage.getItem('token');
 
-            fetch(`http://localhost:8080/api/item/${this.props.info.id}`,{
+            fetch(`${API_URL}/api/item/${this.props.info._id}`,{
                 method:'PUT',
                 body:JSON.stringify(this.state.body),
                 headers:{
                     'Content-Type':'application/json',
-                    'Authorization': 'Bearer ' + token,
+                    'Authorization': 'Bearer ' + this.state.token
                 }
             })
             .then(res=>{
@@ -57,11 +60,17 @@ export class Item extends React.Component{
             })
             .catch(err=>console.log(err));
           };
+
+        handleDelete(e){
+            console.log(this.props.info._id);
+            this.props.dispatch(deleteItem({_id:this.props.info._id, token:this.state.token}));
+          }
+
         
 
     render(){
         return(
-            <div key={this.props.info.id} className='item' onClick={e=>this.handleEdit(e)}>
+            <div key={this.props.info._id} className='item' >
                 <form>
                     <label htmlFor="location" className="item-attribute">Location:
                         <input 
@@ -170,6 +179,11 @@ export class Item extends React.Component{
                     </label>
                     <button hidden={this.state.disabled} type="submit" onClick={e=>this.handleSave(e)}>Save</button>
                 </form>
+                <button onClick={e=>this.handleEdit(e)}>Edit</button>
+                <button className="delete-item" 
+                id='deleteItem'
+                onClick={e=>this.handleDelete(e)}
+                >X</button>
     
             </div>
         )

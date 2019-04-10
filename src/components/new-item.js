@@ -7,7 +7,8 @@ import './stylesheets/new-item-container.css';
 import sizes from '../shapeSize.json'
 import grades from '../grades.json'
 
-import {addNewItem} from '../actions/inventory-actions';
+import {addNewItem, newItemHide} from '../actions/inventory-actions';
+import { API_URL } from '../config';
 
 export class NewItem extends React.Component{
     constructor(props){
@@ -33,7 +34,7 @@ export class NewItem extends React.Component{
         const token = localStorage.getItem('token');
 
         e.preventDefault();
-        fetch(`http://localhost:8080/api/item/`,{
+        fetch(`${API_URL}/api/item/`,{
             method:'POST',
             body:JSON.stringify(newItem),
             headers:{
@@ -42,7 +43,7 @@ export class NewItem extends React.Component{
             }
         })
         .then(res=>{
-            console.log(res.status);
+            //console.log(res.status);
             if(!res.status === 200){
 
                 Promise.reject({
@@ -51,10 +52,20 @@ export class NewItem extends React.Component{
             return res.json()
         })
         .then(resJson=>{
-            console.log(resJson);
+            //console.log(resJson);
             this.props.dispatch(addNewItem(resJson));
+            this.setState({
+                added:true
+            });
+            this.fadeFeedback();
         })
-        .catch(err=>console.log(err));
+        .catch(err=>{
+            console.log(err);
+            this.setState({
+                added:false
+            })
+        
+        });
     };
 
     changeShape(e){
@@ -75,8 +86,7 @@ export class NewItem extends React.Component{
         }
         else{
             return;
-        }
-
+        };
     };
 
     shapeSize(e){
@@ -87,111 +97,130 @@ export class NewItem extends React.Component{
         });
         return sizeOptions;
     };
+    
+    hideNewItem(e){
+        this.props.dispatch(newItemHide());
+    }
+
+    fadeFeedback(){
+        this.timer = setTimeout(_ => {
+            this.setState({
+                added:false
+            });
+          }, 500); // animation timing offset
+    }
 
     render(){
+
+
         const shapes = Object.keys(grades).map(key=>{
             return <option key={key}>{key}</option>
-        })
+        });
+
         return(
+
             <div className='new-item-container'>
-                <form
-                    onSubmit={e=>this.handleSubmit(e)}>
-                    <label htmlFor="location">Area:</label>
-                    <select 
-                        id="location"
-                        name="location" 
-                        defaultValue=""
-                        validate={[required, nonEmpty]}
-                        required
-                        >
-                        <option></option>
-                        <option>Yard A</option>
-                        <option>Yard B</option>
-                    </select>
-                    <label htmlFor="area">Area:</label>
-                    <input 
-                        name="area" 
-                        id="area" 
-                        required
-                        validate={[required, nonEmpty]}
-                        >
-                    </input>
-                    <label htmlFor="quantity">Quantity:</label>
-                    <input 
-                        type='number'
-                        name="quantity" 
-                        id="quantity" 
-                        min='0'
-                        required
-                        validate={[required, nonEmpty]}>
-                    </input>
-                    <label htmlFor="shape">Shape:</label>
-                    <select 
-                        name="shape" 
-                        id="shape" 
-                        required
-                        validate={[required, nonEmpty]}
-                        onChange={e=>{
-                            return this.changeShape(e);
-                            }}>
-                        {shapes}
-                    </select>
-                    <label htmlFor="size">Size:</label>
-                    <select 
-                        name="size" 
-                        id="size" 
-                        required
-                        validate={[required, nonEmpty]}>
-                        {this.shapeSize()}
-                    </select>
-                    <label htmlFor="size">Grade:</label>
-                    <select 
-                        name="grade" 
-                        id="grade" 
-                        validate={[required, nonEmpty]}>
-                        {this.shapeGrade()}
-                    </select>
-                    <label htmlFor="length">Length:
+            
+                <div className={this.state.added?'pos show':'pos hide'}></div>
+
+                <button onClick={e=>this.hideNewItem(e)}>X</button>
+                    <form
+                        onSubmit={e=>this.handleSubmit(e)}>
+                        <label htmlFor="location">Area:</label>
+                        <select 
+                            id="location"
+                            name="location" 
+                            defaultValue=""
+                            validate={[required, nonEmpty]}
+                            required
+                            >
+                            <option></option>
+                            <option>Yard A</option>
+                            <option>Yard B</option>
+                        </select>
+                        <label htmlFor="area">Area:</label>
                         <input 
-                        name='feet'
-                        id='feet'
-                        defaultValue = "0"
-                        min="0"
-                        type='number'></input>'
+                            name="area" 
+                            id="area" 
+                            required
+                            validate={[required, nonEmpty]}
+                            >
+                        </input>
+                        <label htmlFor="quantity">Quantity:</label>
                         <input 
-                        name='inches'
-                        id='inches'
-                        defaultValue = "0"
-                        type='number'></input>"
+                            type='number'
+                            name="quantity" 
+                            id="quantity" 
+                            min='0'
+                            required
+                            validate={[required, nonEmpty]}>
+                        </input>
+                        <label htmlFor="shape">Shape:</label>
+                        <select 
+                            name="shape" 
+                            id="shape" 
+                            required
+                            validate={[required, nonEmpty]}
+                            onChange={e=>{
+                                return this.changeShape(e);
+                                }}>
+                            {shapes}
+                        </select>
+                        <label htmlFor="size">Size:</label>
+                        <select 
+                            name="size" 
+                            id="size" 
+                            required
+                            validate={[required, nonEmpty]}>
+                            {this.shapeSize()}
+                        </select>
+                        <label htmlFor="size">Grade:</label>
+                        <select 
+                            name="grade" 
+                            id="grade" 
+                            validate={[required, nonEmpty]}>
+                            {this.shapeGrade()}
+                        </select>
+                        <label htmlFor="length">Length:
+                            <input 
+                            name='feet'
+                            id='feet'
+                            defaultValue = "0"
+                            min="0"
+                            type='number'></input>'
+                            <input 
+                            name='inches'
+                            id='inches'
+                            defaultValue = "0"
+                            type='number'></input>"
+                            <input 
+                            name='fraction'
+                            id='fraction'
+                            defaultValue = "0"
+                            min="0"
+                            max="15"
+                            type='number'></input>/16
+                        </label>
+                        <label htmlFor="po">Purchase Order #:</label>
                         <input 
-                        name='fraction'
-                        id='fraction'
-                        defaultValue = "0"
-                        min="0"
-                        max="15"
-                        type='number'></input>/16
-                    </label>
-                    <label htmlFor="po">Purchase Order #:</label>
-                    <input 
-                        name="po" 
-                        id="po" >
-                    </input>
-                    <label htmlFor="reserve">Job Reserve:</label>
-                    <input 
-                        name="reserve" 
-                        id="reserve" 
-                        >
-                    </input>
-                    <label htmlFor="remarks">Remarks:</label>
-                    <input 
-                        name="remarks" 
-                        id="remarks" 
-                        >
-                    </input>
-                    <div className='feedback-img pos'></div>
-                    <div className='feedback-img neg'></div>
-                    <button type="submit">Submit</button>
-                </form>
+                            name="po" 
+                            id="po" >
+                        </input>
+                        <label htmlFor="reserve">Job Reserve:</label>
+                        <input 
+                            name="reserve" 
+                            id="reserve" 
+                            >
+                        </input>
+                        <label htmlFor="remarks">Remarks:</label>
+                        <input 
+                            name="remarks" 
+                            id="remarks" 
+                            >
+                        </input>
+
+                        <button type="submit">Submit</button>
+                    </form>
             </div>
         )
     }

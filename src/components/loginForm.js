@@ -5,10 +5,14 @@ import {required, nonEmpty} from '../validators';
 
 import {login} from '../actions/user-actions';
 
+import './stylesheets/landing-header.css'
+
+import {API_URL} from '../config'
+
 export class LoginForm extends React.Component{
     onSubmit(values){
         //console.log(values);
-        fetch('http://localhost:8080/api/auth/login',{
+        fetch(`${API_URL}/api/auth/login`,{
             method:'POST',
             body:JSON.stringify(values),
             headers:{
@@ -35,26 +39,29 @@ export class LoginForm extends React.Component{
     }
     render(){
         return(
-            <form
-                onSubmit={this.props.handleSubmit(values=>
-                    this.onSubmit(values)
-                    )}>
-                <label htmlFor="username">Username</label>
-                <Field 
-                name="username" 
-                id="username" 
-                type="text" 
-                component="input" 
-                validate={[required, nonEmpty]}/>
-                <label htmlFor="password">Password</label>
-                <Field 
-                name="password" 
-                id="password" 
-                type="text" 
-                component="input" 
-                validate={[required, nonEmpty]}/>
-                <button type="submit">Login</button>
-            </form>
+            <div
+            className="login-form-div">
+                <form
+                    onSubmit={this.props.handleSubmit(values=>
+                        this.onSubmit(values)
+                        )}>
+                    <label htmlFor="username">Username</label>
+                    <Field 
+                    name="username" 
+                    id="username" 
+                    type="text" 
+                    component="input" 
+                    validate={[required, nonEmpty]}/>
+                    <label htmlFor="password">Password</label>
+                    <Field 
+                    name="password" 
+                    id="password" 
+                    type="text" 
+                    component="input" 
+                    validate={[required, nonEmpty]}/>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
         )
     }
 }
