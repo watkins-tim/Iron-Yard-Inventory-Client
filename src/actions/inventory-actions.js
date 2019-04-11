@@ -44,7 +44,6 @@ export const addNewItem = (item) => ({
 
 export const DELETE_ITEM='DELETE_ITEM';
 export const deleteItem = (info) => dispatch => {
-    let obj;
     fetch(`${API_URL}/api/item/${info._id}`,{
         method:'DELETE',
         headers:{

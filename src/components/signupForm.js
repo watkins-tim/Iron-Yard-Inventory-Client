@@ -15,8 +15,7 @@ export class SignupForm extends React.Component{
     onSubmit(values){
         const postVals = values;
         delete postVals.confirmPass;
-        console.log(postVals);
-
+        
         return fetch(`${API_URL}/api/user/`,{
             method:'POST',
             body:JSON.stringify(postVals),
@@ -53,26 +52,35 @@ export class SignupForm extends React.Component{
         .catch(err=>console.log(err))
     }
 
+    hide(e){
+        document.getElementById('signup-form-div').className='signup-form-div collapsed';
+    }
+
     render(){
         return(
+        <div className='signup-form-div collapsed'
+        id='signup-form-div'>
             <form
                 onSubmit={this.props.handleSubmit(values=>
                     this.onSubmit(values)
                     )}>
                 <label htmlFor="firstName">First Name</label>
-                <Field name="firstName" id="firstName" type="text" component="input" />
+                <Field name="firstName" id="firstName" type="text" component="input" className='input'/>
                 <label htmlFor="lastName">Last Name</label>
-                <Field name="lastName" id="lastName" type="text" component="input" />
+                <Field name="lastName" id="lastName" type="text" component="input" className='input'/>
                 <label htmlFor="username">Username</label>
-                <Field name="username" id="username" type="text" component="input" />
+                <Field name="username" id="username" type="text" component="input" className='input'/>
                 <label htmlFor="password">Password</label>
-                <Field name="password" id="password" type="text" component="input" />
+                <Field name="password" id="password" type="text" component="input" className='input'/>
                 <label htmlFor="confirmPass">Confirm Password</label>
-                <Field name="confirmPass" id="confirmPas" type="text" component="input" />
+                <Field name="confirmPass" id="confirmPas" type="text" component="input" className='input'/>
                 <label htmlFor="companyID">Company ID</label>
-                <Field name="companyID" id="companyID" type="text" component="input" />
+                <Field name="companyID" id="companyID" type="text" component="input" className='input'/>
                 <button type="submit">Signup</button>
             </form>
+            <button className="collapse-signup" onClick={e=>this.hide(e)}>X</button>
+        </div>
+
         )
     }
 }

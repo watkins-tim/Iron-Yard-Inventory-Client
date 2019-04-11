@@ -6,6 +6,7 @@ import NavBar from './nav-bar';
 import NewItem from './new-item'
 
 import './stylesheets/inventory.css';
+
 import {getInv, loading, notLoading} from '../actions/inventory-actions';
 
 import {API_URL} from '../config'

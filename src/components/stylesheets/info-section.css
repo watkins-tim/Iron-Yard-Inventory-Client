@@ -6,3 +6,26 @@
     color:white;
     
 }
+.signup-form-div{
+    text-align:center;
+    position: fixed;
+    bottom:0px;
+    left: calc(50%-300px);
+    width: 100%;
+    background:#4D4847;
+    height: auto;
+    color:#929982;
+    font-size: 25px;
+    transition: max-height .5s ease-out;
+    overflow:hidden;
+    max-height:160px;
+}
+.signup-form-div.collapsed{
+    max-height:0px;
+}
+.collapse-signup{
+    position:absolute;
+    right:5px;
+    bottom:5px;
+
+}

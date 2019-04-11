@@ -3,6 +3,8 @@ import {BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
 import Home from './home';
 import Inventory from './inventory';
 
+import './stylesheets/App.css'
+
 class App extends Component {
   render() {
 
