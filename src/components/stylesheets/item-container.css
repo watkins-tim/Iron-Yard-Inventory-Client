@@ -1,4 +1,10 @@
 li{
-    border:black 2px solid;
-    margin:3px auto;
+    border:rgb(27, 27, 27) 2px solid;
+    list-style-type:none;
+    margin:5px 20px;
+
+}
+ul{
+
+    list-style-type:none;
 }

@@ -18,7 +18,7 @@ class InfoSection extends React.Component{
             
                 <h2 className='info-text'>Info</h2>
                 <p>This is where the purpose and feature information will go</p>
-                <button onClick={e=>this.showSignup(e)}>Signup</button>
+                <button onClick={e=>this.showSignup(e)} className="signup-button">Employee Signup</button>
                 <SignupForm />
             </div>
         )

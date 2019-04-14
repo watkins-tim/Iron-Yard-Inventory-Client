@@ -3,29 +3,62 @@
     min-height:500px;
 }
 .info-text{
-    color:white;
+    color:#FFA400;
+    height:1.2em;
     
 }
+.info-container p{
+    color:white;
+    size:15px;
+}
+.signup-button{
+    margin:0 calc(50% - 32.5px);
+    height:40px;
+    width:75px;
+    background:none;
+    color: #FFA400;
+    border:#FFA400 2px solid;
+    font-weight:bold;
+    border-radius:2px;
+}
+
 .signup-form-div{
     text-align:center;
     position: fixed;
-    bottom:0px;
-    left: calc(50%-300px);
+    bottom:0;
+    left: 0;
     width: 100%;
     background:#4D4847;
     height: auto;
     color:#929982;
     font-size: 25px;
-    transition: max-height .5s ease-out;
+    transition: max-height .4s ease-out;
     overflow:hidden;
-    max-height:160px;
+    max-height:220px;
 }
 .signup-form-div.collapsed{
     max-height:0px;
 }
+
+.signup-form-div label{
+    display:block;
+    margin-left:10px;
+
+}
+.signup-form-div .input{
+    width:125px;
+    margin:2px 0px 1px 5px;
+}
+
 .collapse-signup{
     position:absolute;
     right:5px;
     bottom:5px;
+
+}
+@media only screen and (max-width: 660px) {
+    .signup-form-div{
+        text-align: left;
+    }
 
 }

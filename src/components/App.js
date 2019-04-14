@@ -6,6 +6,7 @@ import Inventory from './inventory';
 import './stylesheets/App.css'
 
 class App extends Component {
+
   render() {
 
     return (

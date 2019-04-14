@@ -64,18 +64,18 @@ export class SignupForm extends React.Component{
                 onSubmit={this.props.handleSubmit(values=>
                     this.onSubmit(values)
                     )}>
-                <label htmlFor="firstName">First Name</label>
-                <Field name="firstName" id="firstName" type="text" component="input" className='input'/>
-                <label htmlFor="lastName">Last Name</label>
-                <Field name="lastName" id="lastName" type="text" component="input" className='input'/>
-                <label htmlFor="username">Username</label>
-                <Field name="username" id="username" type="text" component="input" className='input'/>
-                <label htmlFor="password">Password</label>
-                <Field name="password" id="password" type="text" component="input" className='input'/>
-                <label htmlFor="confirmPass">Confirm Password</label>
-                <Field name="confirmPass" id="confirmPas" type="text" component="input" className='input'/>
-                <label htmlFor="companyID">Company ID</label>
-                <Field name="companyID" id="companyID" type="text" component="input" className='input'/>
+                <label htmlFor="firstName">First Name
+                <Field name="firstName" id="firstName" type="text" component="input" className='input'/></label>
+                <label htmlFor="lastName"> Last Name
+                <Field name="lastName" id="lastName" type="text" component="input" className='input'/></label>
+                <label htmlFor="username">Username
+                <Field name="username" id="username" type="text" component="input" className='input'/></label>
+                <label htmlFor="password">Password
+                <Field name="password" id="password" type="text" component="input" className='input'/></label>
+                <label htmlFor="confirmPass">Confirm PW
+                <Field name="confirmPass" id="confirmPas" type="text" component="input" className='input'/></label>
+                <label htmlFor="companyID">Company ID
+                <Field name="companyID" id="companyID" type="text" component="input" className='input'/></label>
                 <button type="submit">Signup</button>
             </form>
             <button className="collapse-signup" onClick={e=>this.hide(e)}>X</button>

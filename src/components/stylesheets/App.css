@@ -1,6 +1,9 @@
+html{
+  width:100%;
+  min-width: 100%;
+  box-sizing:border-box;
+}
 *{
   margin:0px;
   padding:0px;
-
-
 }

@@ -4,6 +4,8 @@ import { saveAs } from 'file-saver';
 
 import {newItemShow} from '../actions/inventory-actions'
 
+import './stylesheets/nav-bar.css'
+
 import {API_URL} from '../config'
 
 class NavBar extends React.Component{
@@ -71,7 +73,7 @@ class NavBar extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className='nav-bar-container'>
                 <button onClick={e=>this.logout(e)}>Logout</button>
                 <button onClick={e=>this.showNewItem(e)}>New Item</button>
                 <button onClick={e=>this.getJSON(e)}>Download JSON</button>

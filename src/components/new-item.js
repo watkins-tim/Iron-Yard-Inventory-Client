@@ -69,6 +69,7 @@ export class NewItem extends React.Component{
     };
 
     changeShape(e){
+        document.getElementById('size').value="";
         this.setState({
             newItem:{
                 shape:e.target.value
@@ -93,7 +94,7 @@ export class NewItem extends React.Component{
         const sizesArr = sizes[this.state.newItem.shape.toLowerCase()];
         //console.log(sizesArr);
         const sizeOptions = sizesArr.map((key,i)=>{
-            return <option key={key}>{key}</option>
+            return <option value={key} key={key}>{key}</option>
         });
         return sizeOptions;
     };
@@ -114,7 +115,7 @@ export class NewItem extends React.Component{
 
 
         const shapes = Object.keys(grades).map(key=>{
-            return <option key={key}>{key}</option>
+            return <option value={key} key={key}>{key}</option>
         });
 
         return(
@@ -167,13 +168,17 @@ export class NewItem extends React.Component{
                             {shapes}
                         </select>
                         <label htmlFor="size">Size:</label>
-                        <select 
+
+                        <input 
                             name="size" 
                             id="size" 
                             required
-                            validate={[required, nonEmpty]}>
-                            {this.shapeSize()}
-                        </select>
+                            validate={[required, nonEmpty]} 
+                            list='list'
+                            autoComplete="off"/>
+                            <datalist id='list'>
+                                {this.shapeSize()}
+                            </datalist>
                         <label htmlFor="size">Grade:</label>
                         <select 
                             name="grade" 

@@ -31,17 +31,22 @@ export class Item extends React.Component{
 
           handleEdit(e) {
             e.preventDefault();
-            this.setState( {disabled: false, edited:true} );
+            if (this.state.disabled){
+                this.setState( {disabled: false, edited:true} );
+                e.target.innerHTML="Save"
+            }
+            else{
+                this.handleSave(e);
+                this.setState({
+                    disabled:true
+                });
+                e.target.innerHTML="Edit"
+            }
           } 
 
           handleSave(e){
             e.stopPropagation();
             e.preventDefault();
-
-            this.setState({
-                disabled:true
-            });
-
 
             fetch(`${API_URL}/api/item/${this.props.info._id}`,{
                 method:'PUT',
@@ -78,6 +83,7 @@ export class Item extends React.Component{
                         name='location'
                         id='location'
                         disabled = {(this.state.disabled)? "disabled" : ""}
+                        style={{width:"100px"}}
                         defaultValue={this.props.info.location}
                         ></input>
                     </label>
@@ -87,7 +93,9 @@ export class Item extends React.Component{
                         name='area'
                         id='area'
                         defaultValue={this.props.info.area}
-                        disabled = {(this.state.disabled)? "disabled" : ""}></input>
+                        disabled = {(this.state.disabled)? "disabled" : ""}
+                        style={{width:"100px"}}
+                        ></input>
                     </label>
                     <label htmlFor="shape" className="item-attribute">Shape: 
                         <input
@@ -95,7 +103,9 @@ export class Item extends React.Component{
                         name='shape'
                         id='shape' 
                         defaultValue={this.props.info.shape}
-                        disabled = {(this.state.disabled)? "disabled" : ""}></input>
+                        disabled = {(this.state.disabled)? "disabled" : ""}
+                        style={{width:"25px"}}
+                        ></input>
                     </label>
                     <label htmlFor="size" className="item-attribute">Size:
                         <input 
@@ -103,7 +113,9 @@ export class Item extends React.Component{
                         name='size'
                         id='size'
                         defaultValue={this.props.info.size}
-                        disabled = {(this.state.disabled)? "disabled" : ""}></input>
+                        disabled = {(this.state.disabled)? "disabled" : ""}
+                        style={{width:"100px"}}
+                        ></input>
                     </label>
                     <label htmlFor="quantity" className="item-attribute">Quantity:
                         <input 
@@ -113,7 +125,8 @@ export class Item extends React.Component{
                         type="number"
                         min='0'
                         defaultValue={this.props.info.quantity}
-                        disabled = {(this.state.disabled)? "disabled" : ""}></input>
+                        disabled = {(this.state.disabled)? "disabled" : ""}
+                        style={{width:"40px"}}></input>
                     </label>
                     <label htmlFor="length" className="item-attribute">Length:
                         <input 
@@ -123,7 +136,8 @@ export class Item extends React.Component{
                         type="number"
                         min='0'
                         defaultValue={this.props.info.feet}
-                        disabled = {(this.state.disabled)? "disabled" : ""}></input>'
+                        disabled = {(this.state.disabled)? "disabled" : ""}
+                        style={{width:"30px"}}></input>'
 
                         <input 
                         onChange={e => this.handleChange(e)}
@@ -133,7 +147,8 @@ export class Item extends React.Component{
                         min='0'
                         max='11'
                         defaultValue={this.props.info.inches}
-                        disabled = {(this.state.disabled)? "disabled" : ""}></input>"
+                        disabled = {(this.state.disabled)? "disabled" : ""}
+                        style={{width:"25px"}}></input>"
 
                         <input 
                         onChange={e => this.handleChange(e)}
@@ -143,7 +158,8 @@ export class Item extends React.Component{
                         min='0'
                         max='15'
                         defaultValue={this.props.info.fraction}
-                        disabled = {(this.state.disabled)? "disabled" : ""}></input>/16
+                        disabled = {(this.state.disabled)? "disabled" : ""}
+                        style={{width:"25px"}}></input>/16
                     </label>
                     <label htmlFor="grade" className="item-attribute">Grade:
                         <input 
@@ -151,7 +167,8 @@ export class Item extends React.Component{
                         name='grade'
                         id='grade'
                         defaultValue={this.props.info.grade}
-                        disabled = {(this.state.disabled)? "disabled" : ""}></input>
+                        disabled = {(this.state.disabled)? "disabled" : ""}
+                        style={{width:"30px"}}></input>
                     </label>
                     <label htmlFor="po" className="item-attribute">PO:
                         <input 
@@ -177,9 +194,8 @@ export class Item extends React.Component{
                         defaultValue={this.props.info.remarks}
                         disabled = {(this.state.disabled)? "disabled" : ""}></input>
                     </label>
-                    <button hidden={this.state.disabled} type="submit" onClick={e=>this.handleSave(e)}>Save</button>
                 </form>
-                <button onClick={e=>this.handleEdit(e)}>Edit</button>
+                <button onClick={e=>this.handleEdit(e)} id='edit-toggle'>Edit</button>
                 <button className="delete-item" 
                 id='deleteItem'
                 onClick={e=>this.handleDelete(e)}

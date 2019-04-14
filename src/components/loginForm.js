@@ -59,23 +59,25 @@ export class LoginForm extends React.Component{
                             onSubmit={this.props.handleSubmit(values=>
                                 this.onSubmit(values)
                                 )}>
-                            <label htmlFor="username">Username</label>
-                            <Field 
-                            name="username" 
-                            className='input'
-                            type="text" 
-                            component="input" 
-                            required
-                            validate={[required, nonEmpty]}/>
-                            <label htmlFor="password">Password</label>
-                            <Field 
-                            name="password" 
-                            className='input'
-                            type="password" 
-                            component="input" 
-                            required
-                            validate={[required, nonEmpty]}/>
-                            <button type="submit">Login</button><br></br>
+                            <label htmlFor="username">Username
+                                <Field 
+                                name="username" 
+                                className='input'
+                                type="text" 
+                                component="input" 
+                                required
+                                validate={[required, nonEmpty]}/>
+                            </label>
+                            <label htmlFor="password"> Password
+                                <Field 
+                                name="password" 
+                                className='input'
+                                type="password" 
+                                component="input" 
+                                required
+                                validate={[required, nonEmpty]}/>
+                            </label>
+                            <button type="submit" className='login-submit-button'>Login</button><br></br>
                             <p className='feedback'
                             id="feedback"
                             ></p> 
