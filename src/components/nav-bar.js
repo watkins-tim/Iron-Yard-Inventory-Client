@@ -2,11 +2,11 @@ import React from 'react';
 import {connect} from "react-redux";
 import { saveAs } from 'file-saver';
 
-import {newItemShow} from '../actions/inventory-actions'
+import {newItemShow} from '../actions/inventory-actions';
 
-import './stylesheets/nav-bar.css'
+import './stylesheets/nav-bar.css';
 
-import {API_URL} from '../config'
+import {API_URL} from '../config';
 
 class NavBar extends React.Component{
     constructor(props){
