@@ -9,9 +9,9 @@ class LandingHeader extends React.Component{
     constructor(props){
         super(props)
         if (localStorage.getItem('token')){
-            this.setState({},{
+            this.state={
                 loggedIn:true
-            })
+            }
         }
 
 
@@ -38,6 +38,9 @@ class LandingHeader extends React.Component{
                 history={this.props.history}/>
 
                 <h1 className='heading-text'>Iron Yard Inventory</h1>
+                <hr className="line-1"></hr>
+                <h2 className='heading-subtext'>An Inventory Auditing Application for Fabricators, Mills, and Service Centers</h2>
+
             </div>
         
         )

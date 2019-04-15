@@ -22,6 +22,10 @@
     border-radius:2px;
 }
 
+.input-col{
+    display:inline-block;
+}
+
 .signup-form-div{
     text-align:center;
     position: fixed;

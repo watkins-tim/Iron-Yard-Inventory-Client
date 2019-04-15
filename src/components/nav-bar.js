@@ -74,10 +74,14 @@ class NavBar extends React.Component{
     render(){
         return(
             <div className='nav-bar-container'>
-                <button onClick={e=>this.logout(e)}>Logout</button>
-                <button onClick={e=>this.showNewItem(e)}>New Item</button>
-                <button onClick={e=>this.getJSON(e)}>Download JSON</button>
-                <button onClick={e=>this.getCSV(e)}>Download CSV</button>
+                <div className='iron-icon'></div>
+                <h1>Iron Yard Inventory</h1>
+                <div className='button-container'>
+                    <button onClick={e=>this.logout(e)}>Logout</button>
+                    <button onClick={e=>this.showNewItem(e)}>New Item</button>
+                    <button onClick={e=>this.getJSON(e)}>Download JSON</button>
+                    <button onClick={e=>this.getCSV(e)}>Download CSV</button>
+                </div>
             </div>
             
         )

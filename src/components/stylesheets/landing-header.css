@@ -9,8 +9,21 @@
 .heading-text{
     color: #FFA400;
     font-size:80px;
-    font-weight:900;
+    font-weight:400;
     padding-top:200px;
+}
+
+.line-1{
+    color:#929982;
+    margin:15px auto 5px auto;
+    width: 90%;
+    max-width:850px;
+}
+.heading-subtext{
+    color: #FFFFFF;
+    font-size:20px;
+    font-weight:300;
+    margin: 20px 5%
 }
 
 .login-button, .hide-button{
@@ -45,7 +58,7 @@
     left:0;
     width: 100%;
 
-    background:#070707;
+    background:rgb(29, 27, 27);
     height: auto;
     color:#929982;
     font-size: 25px;
