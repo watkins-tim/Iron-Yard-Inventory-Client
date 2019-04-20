@@ -76,7 +76,7 @@ export class LoginForm extends React.Component{
                                 required
                                 validate={[required, nonEmpty]}/>
                             </label>
-                            <p className="sample-login">Sample Login: testUser Password: password123</p>
+                            <p className="sample-login">Sample Login -- Username: testUser  Password: password123</p>
                             <button type="submit" className='login-submit-button'>Login</button><br></br>
                             <p className='feedback'
                             id="feedback-login"

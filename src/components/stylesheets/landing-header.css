@@ -38,7 +38,7 @@
     font-weight:bold;
     border-radius:2px;
 }
-.login-button:hover, .hide-button:hover .login-submit-button:hover{
+.login-button:hover, .hide-button:hover, .login-submit-button:hover{
     background:#4D4847;
 }
 .login-submit-button{
