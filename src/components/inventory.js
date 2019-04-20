@@ -98,7 +98,7 @@ class Inventory extends React.Component{
         }
 
 
-        const pageInfo = <h2>{this.state.page+1} of {this.state.pages}</h2>
+        const pageInfo = <h2 className="page-info">{this.state.page+1} of {this.state.pages}</h2>
 
 
         return(
@@ -106,13 +106,13 @@ class Inventory extends React.Component{
                 <NavBar history={this.props.history} />
                 <h3 id='feedback' style={{display:"none"}}>Internal Server Error</h3>
                 {newItemContainer}
-                <button onClick={e=>this.prevPage()}>Prev</button>
+                <button className="page-button" onClick={e=>this.prevPage()}>Prev</button>
                 {pageInfo}
-                <button onClick={e=>this.nextPage()}>Next</button>
+                <button className="page-button" onClick={e=>this.nextPage()}>Next</button>
                 <ItemContainer />
-                <button onClick={e=>this.prevPage()}>Prev</button>
+                <button className="page-button" onClick={e=>this.prevPage()}>Prev</button>
                 {pageInfo}
-                <button onClick={e=>this.nextPage()}>Next</button>
+                <button className="page-button" onClick={e=>this.nextPage()}>Next</button>
             </div>
         );
     }

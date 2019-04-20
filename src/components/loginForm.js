@@ -31,17 +31,16 @@ export class LoginForm extends React.Component{
             this.props.dispatch(login(res));
             this.props.history.push('/inventory');
         })
-
         .catch(err=>{
             document.getElementById('login-form').style.height="auto";
             if (err.status===401){
-                document.getElementById('feedback').innerHTML = 'Incorrect Username or Password'                
+                document.getElementById('feedback-login').innerHTML = 'Incorrect Username or Password'                
             }
             else if(err.status===500){
-                document.getElementById('feedback').innerHTML = "Internal Server Error"                
+                document.getElementById('feedback-login').innerHTML = "Internal Server Error"                
             }
             else{
-                document.getElementById('feedback').innerHTML = "Something went wrong."                
+                document.getElementById('feedback-login').innerHTML = "Something went wrong."                
             }
         })
 
@@ -77,9 +76,10 @@ export class LoginForm extends React.Component{
                                 required
                                 validate={[required, nonEmpty]}/>
                             </label>
+                            <p className="sample-login">Sample Login: testUser Password: password123</p>
                             <button type="submit" className='login-submit-button'>Login</button><br></br>
                             <p className='feedback'
-                            id="feedback"
+                            id="feedback-login"
                             ></p> 
                         </form>
                     </div>

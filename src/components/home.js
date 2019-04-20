@@ -10,7 +10,7 @@ export default function Home(props){
     return(
         <div className='home-container'>
             <LandingHeader history={props.history}/>
-            <InfoSection />
+            <InfoSection history={props.history}/>
         </div>
     )
 };

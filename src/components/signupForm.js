@@ -13,43 +13,64 @@ export class SignupForm extends React.Component{
     }
     
     onSubmit(values){
-        const postVals = values;
-        delete postVals.confirmPass;
+        const postVals = Object.assign({}, values);
+        if (values.password === values.confirmPass){
+            delete postVals.confirmPass;
         
-        return fetch(`${API_URL}/api/user/`,{
-            method:'POST',
-            body:JSON.stringify(postVals),
-            headers:{
-                'Content-Type':'application/json'
-            }
-        })
-        .then(res=>{
-            if(!(res.status===201)){
-                Promise.reject({
-                    code:res.status,
-                });
-            }
-            return fetch(`${API_URL}/api/auth/login`,{
+            return fetch(`${API_URL}/api/user/`,{
                 method:'POST',
-                body:JSON.stringify({username:values.username,password:values.password}),
+                body:JSON.stringify(postVals),
                 headers:{
                     'Content-Type':'application/json'
                 }
             })
-            .then(res=>res.json())
             .then(res=>{
-                //console.log(res);
+                if(!(res.status===201)){
+                    return Promise.reject({
+                        code:res.status,
+                    });
+                }
+                return fetch(`${API_URL}/api/auth/login`,{
+                    method:'POST',
+                    body:JSON.stringify({username:values.username,password:values.password}),
+                    headers:{
+                        'Content-Type':'application/json'
+                    }
+                })
+            })
+            .then(res=>{
                 if(!(res.status===200)){
-                    Promise.reject({
+                    return Promise.reject({
                         code:res.status
                     });
                 }
-                this.props.dispatch(login(res));
-                this.goToInventory();
+                return res.json()
             })
-            .catch(err=>console.log(err))
-        })
-        .catch(err=>console.log(err))
+                .then(res=>{
+                    //console.log(res);
+
+                    this.props.dispatch(login(res));
+                    this.goToInventory();
+                })
+                .catch(err=>{
+
+
+                    if (err.code===422){
+                        document.getElementById('feedback-signup').innerHTML = 'Username Already Taken or Company does not exist.'                
+                    }
+                    else if(err.code===500){
+                        document.getElementById('feedback-signup').innerHTML = "Internal Server Error."                
+                    }
+                    else{
+                        document.getElementById('feedback-signup').innerHTML = "Something went wrong."                
+                    }
+                    document.getElementById('signup-form-div').style.height="auto";
+
+                })            
+        }
+        else{
+            document.getElementById('feedback-signup').innerHTML = 'Passwords must match.'
+        }    
     }
 
     hide(e){
@@ -64,6 +85,9 @@ export class SignupForm extends React.Component{
                 onSubmit={this.props.handleSubmit(values=>
                     this.onSubmit(values)
                     )}>
+                <p className='feedback'
+                    id="feedback-signup"
+                ></p>
                 <div className='input-col'>
                     <label htmlFor="firstName">First Name
                     <Field name="firstName" id="firstName" type="text" component="input" className='input' required/></label>
@@ -74,14 +98,14 @@ export class SignupForm extends React.Component{
                 </div>
                 <div className='input-col'>
                     <label htmlFor="password">Password
-                    <Field name="password" id="password" type="text" component="input" className='input' required/></label>
+                    <Field name="password" id="password" type="password" component="input" className='input' required/></label>
                     <label htmlFor="confirmPass">Confirm PW
-                    <Field name="confirmPass" id="confirmPas" type="text" component="input" className='input' required/></label>
+                    <Field name="confirmPass" id="confirmPas" type="password" component="input" className='input' required/></label>
                     <label htmlFor="companyID">Company ID
                     <Field name="companyID" id="companyID" type="text" component="input" className='input' required/></label>
                 </div>
-
-                <button type="submit">Signup</button>
+                <br></br>
+                <button className="signup-submit-button" type="submit">Signup</button>
             </form>
             <button className="collapse-signup" onClick={e=>this.hide(e)}>X</button>
         </div>

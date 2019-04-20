@@ -2,24 +2,32 @@
     background:linear-gradient(rgb(27, 27, 27), rgb(53, 53, 53));
     min-height:500px;
 }
-.info-text{
+.info-header{
     color:#FFA400;
     height:1.2em;
+    padding:10px 5%
     
 }
-.info-container p{
+
+.info-text{
     color:white;
     size:15px;
+    padding:20px 5%
+
 }
 .signup-button{
-    margin:0 calc(50% - 32.5px);
-    height:40px;
-    width:75px;
+    margin:0 calc(50% - 75px);
+    height:60px;
+    width:150px;
     background:none;
     color: #FFA400;
     border:#FFA400 2px solid;
+    font-size: 20px;
     font-weight:bold;
     border-radius:2px;
+}
+.signup-button:hover{
+    background:#4D4847;
 }
 
 .input-col{
@@ -38,10 +46,24 @@
     font-size: 25px;
     transition: max-height .4s ease-out;
     overflow:hidden;
-    max-height:220px;
+    max-height:255px;
+}
+.signup-submit-button{
+    margin:3px calc(50% - 32.5px);
+    height:28px;
+    width:75px;
+    background:none;
+    color: #FFA400;
+    border:#FFA400 2px solid;
+    font-weight:bold;
+    border-radius:2px;
 }
 .signup-form-div.collapsed{
     max-height:0px;
+}
+.sample-login{
+    color:white;
+    font-size:13px;
 }
 
 .signup-form-div label{
@@ -58,11 +80,17 @@
     position:absolute;
     right:5px;
     bottom:5px;
-
+    height:22px;
+    width:22px;
+    background:none;
+    color: #FFA400;
+    border:#FFA400 2px solid;
+    font-weight:bold;
+    border-radius:2px;
 }
 @media only screen and (max-width: 660px) {
     .signup-form-div{
-        text-align: left;
+        text-align: center;
     }
 
 }

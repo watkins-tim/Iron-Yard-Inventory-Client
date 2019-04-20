@@ -28,7 +28,7 @@
 
 .login-button, .hide-button{
     position: absolute;
-    top:5px;
+    top:9px;
     right:5px;
     height:30px;
     width:60px;
@@ -38,12 +38,12 @@
     font-weight:bold;
     border-radius:2px;
 }
-.login-button:hover, .hide-button:hover .login-submit-button{
+.login-button:hover, .hide-button:hover .login-submit-button:hover{
     background:#4D4847;
 }
 .login-submit-button{
-    margin:0 calc(50% - 32.5px);
-    height:28px;
+    margin:3px calc(50% - 32.5px);
+    height:30px;
     width:75px;
     background:none;
     color: #FFA400;
@@ -57,13 +57,14 @@
     top:0;
     left:0;
     width: 100%;
-
+    max-width: 100%;
     background:rgb(29, 27, 27);
     height: auto;
     color:#929982;
     font-size: 25px;
     transition: max-height .5s ease-out;
     overflow:hidden;
+
     max-height:160px;
     display:block;
 }
@@ -92,14 +93,25 @@
 }
 
 @media only screen and (max-width: 660px) {
-    .login-form-div{
-        text-align:left;
-    }
     .login-form-div label{
         display:block;
         margin-left:20px;
     }
     .heading-text{
         font-size:65px;
+    }
+
+  }
+  @media only screen and (max-width: 400px) {
+    .login-form-div{
+        text-align:left;
+        max-height:200px;
+    }
+
+    .heading-text{
+        font-size:55px;
+    }
+    .login-button, .hide-button{
+        width:40px;
     }
   }

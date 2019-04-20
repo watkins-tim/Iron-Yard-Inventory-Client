@@ -1,5 +1,9 @@
 .inventory-container{
     min-height:1000px;
     background: rgba(250, 249, 249, 0.979);
+    text-align: center;
 }
 
+.page-info, .page-button{
+    display: inline-block;
+}
