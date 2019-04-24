@@ -3,5 +3,7 @@ import Home from '../home'
 import {shallow, mount} from 'enzyme';
 
 it('renders without crashing', () => {
-    shallow(<Home />);
+    const wrapper = shallow(<Home />);
+    expect(wrapper.hasClass('home-container')).toEqual(true);
+
 });
