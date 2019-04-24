@@ -1,9 +1,33 @@
 .inventory-container{
     min-height:1000px;
-    background: rgba(250, 249, 249, 0.979);
+    background: rgb(241, 240, 240);
     text-align: center;
 }
 
 .page-info, .page-button{
     display: inline-block;
+    vertical-align: middle
+
+}
+.page-info{
+    font-size:18px;
+}
+.page-button{
+    margin:0px 10px 5px 10px;
+    height:28px;
+    width:75px;
+    background:none;
+    color: black;
+    border:#FFA400 2px solid;
+    font-weight:bold;
+    border-radius:2px;
+    font-size:17px;
+}
+
+.page-button:hover{
+    background:#4D4847;
+    color:#FFA400;
+}
+.no-items{
+    display:inline-block;
 }

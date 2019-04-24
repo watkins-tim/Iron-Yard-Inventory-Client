@@ -1,10 +1,17 @@
 .new-item-container{
-    background: green;
-    position: fixed;
+    background: #929982;
+    top:0px;
+    left:0px;
+    margin:40px auto;
+    position:fixed;
     top:100px;
-    left:100px;
+    left:calc(50% - 125px);
+    width:250px;
+    text-align: left;
     padding:20px;
-
+    z-index:1000;
+    border:2px solid #7c816e;
+    border-radius:3px;
 }
 .pos{
     background: url('../../images/check.png');
@@ -13,13 +20,13 @@
     background: url('../../images/X.png');
 }
 .pos, .neg{
-    background-color:pink;
+    background-color:rgba(0,0,0,0);
     position:absolute;
-    top:50px;
-    left:100px;
+    top:-100px;
+    left:75px;
     opacity: 0;
-    height:40px;
-    width:40px;
+    height:100px;
+    width:100px;
     background-position:center;
     background-size: contain;
 }
@@ -29,6 +36,37 @@
 .neg.hide, .pos.hide{
     opacity:0;
     transition: opacity 2s;
+}
+.exit-new-item{
+    width:28px;
+    height:28px;
+    position:absolute;
+    top:8px;
+    right:8px;
+    background:none;
+    color: #FFA400;
+    border:#FFA400 2px solid;
+    font-weight:bold;
+    border-radius:2px;
+}
+.exit-new-item:hover, .submit-new-item:hover{
+    background:rgb(172, 172, 172);
+}
+.new-item-col{
+    display: inline-block;
+    background: rgb(172, 172, 172);
+    padding:10px;
+}
+.submit-new-item{
+    margin: 5px auto 0px auto;
+    background:none;
+    color: black;
+    border:#FFA400 2px solid;
+    font-weight:bold;
+    border-radius:2px;
+    height:25px;
+    width:60px;
+
 }
 
 

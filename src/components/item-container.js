@@ -14,21 +14,18 @@ class ItemContainer extends React.Component{
         
         if (this.props.loading){
             return(
-            <div className='inventory-container'>
+            <div >
                 <h2>LOADING</h2>
             </div>
             );
         }
         else if (this.props.loading ===false && this.props.items.length>0){
-            
             const Items = this.props.items.map(item=>{
                 //console.log(item);
                 return <li key={item._id}><Item info={item}/></li> 
-
             })
             return(
-                <div className='inventory-container'>
-                    <h2>notloading</h2>
+                <div >
                     <ul>
                         {Items}
                     </ul>
@@ -38,7 +35,8 @@ class ItemContainer extends React.Component{
         }
         
         else{
-            return <h1>NOthing</h1>
+            return <h1 className="no-items">No Items in Inventory</h1>
+
         }
 
     }

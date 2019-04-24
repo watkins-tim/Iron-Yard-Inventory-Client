@@ -20,6 +20,7 @@ export class Item extends React.Component{
           }
 
 
+
           //only adds changed values to this.state.body to be sent to server
           handleChange(e){
             const obj = {...this.state.body,
@@ -58,7 +59,7 @@ export class Item extends React.Component{
             })
             .then(res=>{
                 if(!res.status === 200){
-                    Promise.reject({
+                    return Promise.reject({
                     });
                 }
                 return res.json()
@@ -76,6 +77,10 @@ export class Item extends React.Component{
     render(){
         return(
             <div key={this.props.info._id} className='item' >
+                <button className="delete-item" 
+                id='deleteItem'
+                onClick={e=>this.handleDelete(e)}
+                >X</button>
                 <form>
                     <label htmlFor="location" className="item-attribute">Location:
                         <input 
@@ -104,7 +109,7 @@ export class Item extends React.Component{
                         id='shape' 
                         defaultValue={this.props.info.shape}
                         disabled = {(this.state.disabled)? "disabled" : ""}
-                        style={{width:"25px"}}
+                        style={{width:"50px"}}
                         ></input>
                     </label>
                     <label htmlFor="size" className="item-attribute">Size:
@@ -137,7 +142,7 @@ export class Item extends React.Component{
                         min='0'
                         defaultValue={this.props.info.feet}
                         disabled = {(this.state.disabled)? "disabled" : ""}
-                        style={{width:"30px"}}></input>'
+                        style={{width:"40px"}}></input>'
 
                         <input 
                         onChange={e => this.handleChange(e)}
@@ -148,7 +153,7 @@ export class Item extends React.Component{
                         max='11'
                         defaultValue={this.props.info.inches}
                         disabled = {(this.state.disabled)? "disabled" : ""}
-                        style={{width:"25px"}}></input>"
+                        style={{width:"30px"}}></input>"
 
                         <input 
                         onChange={e => this.handleChange(e)}
@@ -159,7 +164,7 @@ export class Item extends React.Component{
                         max='15'
                         defaultValue={this.props.info.fraction}
                         disabled = {(this.state.disabled)? "disabled" : ""}
-                        style={{width:"25px"}}></input>/16
+                        style={{width:"30px"}}></input>/16
                     </label>
                     <label htmlFor="grade" className="item-attribute">Grade:
                         <input 
@@ -168,7 +173,7 @@ export class Item extends React.Component{
                         id='grade'
                         defaultValue={this.props.info.grade}
                         disabled = {(this.state.disabled)? "disabled" : ""}
-                        style={{width:"30px"}}></input>
+                        style={{width:"50px"}}></input>
                     </label>
                     <label htmlFor="po" className="item-attribute">PO:
                         <input 
@@ -195,11 +200,8 @@ export class Item extends React.Component{
                         disabled = {(this.state.disabled)? "disabled" : ""}></input>
                     </label>
                 </form>
-                <button onClick={e=>this.handleEdit(e)} id='edit-toggle'>Edit</button>
-                <button className="delete-item" 
-                id='deleteItem'
-                onClick={e=>this.handleDelete(e)}
-                >X</button>
+                <button onClick={e=>this.handleEdit(e)} id='edit-toggle' className="edit-submit">Edit</button>
+
     
             </div>
         )

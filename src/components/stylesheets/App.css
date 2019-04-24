@@ -15,9 +15,9 @@ html, body{
 h1, h2, h3{
   font-family: 'Cantata One', serif;
 }
-button:hover{
+button:hover, input:hover{
   cursor: pointer;
 }
-button:focus{
+button:focus, input:focus{
   border:2px solid greenyellow;
 }

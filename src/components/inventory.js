@@ -56,7 +56,7 @@ class Inventory extends React.Component{
         })
         .then(res=>{
             if(!res.status === 200){
-                Promise.reject({
+                return Promise.reject({
                     status:res.status
                 });
             } 
@@ -81,9 +81,9 @@ class Inventory extends React.Component{
             }
         })
         .catch(err=>{
-            console.log(err)
-            if (err.status ===500){
-                document.getElementById('feedback').style.display = "inline";
+            console.log(err);
+            if (err.code ===500){
+                document.getElementById('feedback').style.display = "inline-block";
             }
             else{
                 this.props.history.push('/');
@@ -105,11 +105,11 @@ class Inventory extends React.Component{
             <div className='inventory-container'>
                 <NavBar history={this.props.history} />
                 <h3 id='feedback' style={{display:"none"}}>Internal Server Error</h3>
-                {newItemContainer}
+                {newItemContainer}<br></br>
                 <button className="page-button" onClick={e=>this.prevPage()}>Prev</button>
                 {pageInfo}
-                <button className="page-button" onClick={e=>this.nextPage()}>Next</button>
-                <ItemContainer />
+                <button className="page-button" onClick={e=>this.nextPage()}>Next</button><br></br>
+                <ItemContainer /><br></br>
                 <button className="page-button" onClick={e=>this.prevPage()}>Prev</button>
                 {pageInfo}
                 <button className="page-button" onClick={e=>this.nextPage()}>Next</button>

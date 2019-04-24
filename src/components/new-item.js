@@ -43,21 +43,23 @@ export class NewItem extends React.Component{
             }
         })
         .then(res=>{
-            //console.log(res.status);
-            if(!res.status === 200){
+            console.log(res.status);
+            if(!(res.status === 200)){
 
-                Promise.reject({
+                return Promise.reject({
+                    code:res.status
                 });
             }
             return res.json()
         })
         .then(resJson=>{
-            //console.log(resJson);
+            console.log(resJson);
             this.props.dispatch(addNewItem(resJson));
             this.setState({
                 added:true
             });
             this.fadeFeedback();
+            this.clearFields();
         })
         .catch(err=>{
             console.log(err);
@@ -67,6 +69,15 @@ export class NewItem extends React.Component{
         
         });
     };
+    clearFields(e){
+        document.getElementById("quantity").value=""
+        document.getElementById("feet").value=""
+        document.getElementById("inches").value=""
+        document.getElementById("fraction").value=""
+        document.getElementById("remarks").value=""
+        document.getElementById("po").value=""
+        document.getElementById("reserve").value="";
+    }
 
     changeShape(e){
         document.getElementById('size').value="";
@@ -121,24 +132,23 @@ export class NewItem extends React.Component{
         return(
 
             <div className='new-item-container'>
-            
+                <h2 className="new-item-header">New Item</h2>
                 <div className={this.state.added?'pos show':'pos hide'}></div>
 
-                <button onClick={e=>this.hideNewItem(e)}>X</button>
-                    <form
-                        onSubmit={e=>this.handleSubmit(e)}>
-                        <label htmlFor="location">Area:</label>
-                        <select 
+                <button onClick={e=>this.hideNewItem(e)}
+                    className="exit-new-item">X</button>
+                    <form onSubmit={e=>this.handleSubmit(e)}>
+                        <div className='new-item-col'>
+                        
+                        <label htmlFor="location">Location:</label>
+                        <input 
                             id="location"
                             name="location" 
                             defaultValue=""
                             validate={[required, nonEmpty]}
                             required
                             >
-                            <option></option>
-                            <option>Yard A</option>
-                            <option>Yard B</option>
-                        </select>
+                        </input><br></br>
                         <label htmlFor="area">Area:</label>
                         <input 
                             name="area" 
@@ -146,16 +156,17 @@ export class NewItem extends React.Component{
                             required
                             validate={[required, nonEmpty]}
                             >
-                        </input>
+                        </input><br></br>
                         <label htmlFor="quantity">Quantity:</label>
                         <input 
                             type='number'
                             name="quantity" 
                             id="quantity" 
                             min='0'
+                            style={{width:"70px"}}
                             required
                             validate={[required, nonEmpty]}>
-                        </input>
+                        </input><br></br>
                         <label htmlFor="shape">Shape:</label>
                         <select 
                             name="shape" 
@@ -166,7 +177,7 @@ export class NewItem extends React.Component{
                                 return this.changeShape(e);
                                 }}>
                             {shapes}
-                        </select>
+                        </select><br></br>
                         <label htmlFor="size">Size:</label>
 
                         <input 
@@ -178,53 +189,60 @@ export class NewItem extends React.Component{
                             autoComplete="off"/>
                             <datalist id='list'>
                                 {this.shapeSize()}
-                            </datalist>
-                        <label htmlFor="size">Grade:</label>
+                            </datalist><br></br>
+
+
+                        <label htmlFor="grade">Grade:</label>
                         <select 
                             name="grade" 
                             id="grade" 
                             validate={[required, nonEmpty]}>
                             {this.shapeGrade()}
-                        </select>
+                        </select><br></br>
                         <label htmlFor="length">Length:
                             <input 
                             name='feet'
                             id='feet'
                             defaultValue = "0"
                             min="0"
-                            type='number'></input>'
+                            type='number'
+                            style={{width:"40px"}}></input>'<br></br>
                             <input 
+                            min="0"
+                            max='11'
                             name='inches'
                             id='inches'
                             defaultValue = "0"
-                            type='number'></input>"
+                            type='number'
+                            style={{width:"40px"}}></input>"<br></br>
                             <input 
                             name='fraction'
                             id='fraction'
                             defaultValue = "0"
                             min="0"
                             max="15"
-                            type='number'></input>/16
+                            type='number'
+                            style={{width:"40px"}}></input>/16<br></br>
                         </label>
                         <label htmlFor="po">Purchase Order #:</label>
                         <input 
                             name="po" 
                             id="po" >
-                        </input>
+                        </input><br></br>
                         <label htmlFor="reserve">Job Reserve:</label>
                         <input 
                             name="reserve" 
                             id="reserve" 
                             >
-                        </input>
+                        </input><br></br>
                         <label htmlFor="remarks">Remarks:</label>
                         <input 
                             name="remarks" 
                             id="remarks" 
                             >
-                        </input>
-
-                        <button type="submit">Submit</button>
+                        </input><br></br>
+                        </div>
+                        <button className="submit-new-item" type="submit">Submit</button>
                     </form>
             </div>
         )

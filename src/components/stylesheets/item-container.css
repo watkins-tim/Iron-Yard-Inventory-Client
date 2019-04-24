@@ -8,3 +8,6 @@ ul{
 
     list-style-type:none;
 }
+.no-items{
+    margin:20px 0px;
+}

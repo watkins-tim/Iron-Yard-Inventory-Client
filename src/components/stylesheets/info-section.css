@@ -88,6 +88,10 @@
     font-weight:bold;
     border-radius:2px;
 }
+
+.signup-submit-button:hover, .collapse-signup:hover{
+    background: rgb(29, 27, 27);
+}
 @media only screen and (max-width: 660px) {
     .signup-form-div{
         text-align: center;
