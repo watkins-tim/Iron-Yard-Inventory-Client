@@ -1,6 +1,7 @@
 .item{
     margin:10px 10px;
-    position:relative
+    position:relative;
+    padding:0px 15px;
 }
 .item input{
     margin:3px 0px 2px 2px;
@@ -23,6 +24,7 @@
     border-radius:2px;
 }
 .edit-submit{
+    margin-top:5px;
     width:40px;
     height:25px;
     background:none;

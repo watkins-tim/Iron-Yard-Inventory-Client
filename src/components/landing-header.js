@@ -19,7 +19,7 @@ class LandingHeader extends React.Component{
         document.getElementById('login-form').className='login-form-div';
     }
     componentDidMount(){
-        document.getElementById("header-container").scrollTop = '0';
+        document.getElementById('header-container').scrollTop = '0';
         let height = window.innerHeight
         || document.documentElement.clientHeight
         || document.body.clientHeight;

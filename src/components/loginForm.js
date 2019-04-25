@@ -10,6 +10,7 @@ import './stylesheets/landing-header.css';
 
 import {API_URL} from '../config';
 console.log(API_URL);
+
 export class LoginForm extends React.Component{
     onSubmit(values){
         fetch(`${API_URL}/api/auth/login`,{

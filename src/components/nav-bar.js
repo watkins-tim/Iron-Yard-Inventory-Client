@@ -6,9 +6,7 @@ import {newItemShow} from '../actions/inventory-actions';
 
 import './stylesheets/nav-bar.css';
 
-import {API_URL} from '../config';
-
-class NavBar extends React.Component{
+import {API_URL} from '../config';class NavBar extends React.Component{
     constructor(props){
         super(props);
         this.state={

@@ -5,9 +5,7 @@ import {reduxForm, Field} from 'redux-form';
 
 import {login} from '../actions/user-actions'
 
-import {API_URL} from '../config'
-
-export class SignupForm extends React.Component{
+import {API_URL} from '../config';export class SignupForm extends React.Component{
     goToInventory() {
         this.props.history.push('/inventory');
     }

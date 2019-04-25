@@ -5,9 +5,7 @@ import {deleteItem} from '../actions/inventory-actions'
 
 import './stylesheets/item.css';
 
-import {API_URL} from '../config'
-
-export class Item extends React.Component{
+import {API_URL} from '../config';export class Item extends React.Component{
         constructor(props) {
             super(props);
             this.state = { 

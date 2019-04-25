@@ -9,8 +9,7 @@ import './stylesheets/inventory.css';
 
 import {getInv, loading, notLoading} from '../actions/inventory-actions';
 
-import {API_URL} from '../config'
-
+import {API_URL} from '../config';
 
 class Inventory extends React.Component{
 

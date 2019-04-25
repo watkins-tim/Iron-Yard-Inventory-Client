@@ -5,3 +5,4 @@ import {shallow, mount} from 'enzyme';
 it('renders without crashing', () => {
     shallow(<LoginForm />);
 });
+

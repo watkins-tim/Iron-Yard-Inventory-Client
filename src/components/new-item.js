@@ -8,9 +8,7 @@ import sizes from '../shapeSize.json'
 import grades from '../grades.json'
 
 import {addNewItem, newItemHide} from '../actions/inventory-actions';
-import { API_URL } from '../config';
-
-export class NewItem extends React.Component{
+import {API_URL} from '../config';export class NewItem extends React.Component{
     constructor(props){
         super(props);
         this.state={
@@ -119,7 +117,7 @@ export class NewItem extends React.Component{
             this.setState({
                 added:false
             });
-          }, 500); // animation timing offset
+          }, 700); // animation timing offset
     }
 
     render(){

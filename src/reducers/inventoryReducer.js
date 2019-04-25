@@ -48,10 +48,8 @@ export default(state=initialState, action)=>{
         return obj;
     }
     else if(action.type === DELETE_ITEM_SUCCESS){
-        console.log('here2');
         let obj;
         let arr = state.items;
-        console.log(arr);
         const i = state.items.findIndex(x=>{
             return x._id === action.info._id
         });
