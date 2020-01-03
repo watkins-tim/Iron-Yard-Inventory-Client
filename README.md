@@ -83,7 +83,7 @@ This app is designed for steel mills, fabricators and service centers.  It allow
 
 Currently companies have to be created by the Iron Yard Inventory server manager. You cannot create a company as a user. 
 
-I developed this app as it has real life applications.  I work for a structural steel fabricator.  Every year we have an audit of the tens of thousands of items in our inventory.  This process requires many hours of recording items on paper, followed by many more hours of data entry into excel sheets, culminating in one last upload into FabSuite, steel fabrication software package.  Iron Yard Inventory aims to eliminate the inefficiencies and human error common with our current procedure. 
+I used to work for a structural steel fabricator.  Every year we had an audit of the tens of thousands of items in our inventory.  This process requires many hours of recording items on paper, followed by many more hours of data entry into excel sheets, culminating in one last upload into FabSuite, steel fabrication software package.  Iron Yard Inventory aims to eliminate the inefficiencies and human error common with our current procedure. 
 
 ## **V2.0**
 
